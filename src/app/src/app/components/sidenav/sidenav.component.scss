@@ -1,0 +1,33 @@
+.estiloSidenav mat-drawer {
+  height: 100%;
+  width: 256px;
+  position: fixed;
+  left: 0;
+  //background-color: #2d5986;
+  background-image: linear-gradient(#19334D, #2d5986);
+  border-right: 10px solid #d9d9d9;
+  box-shadow: inset 0px 0px 1.3px 1.3px #f1f1fb;
+  
+}
+
+.estiloSidenav app-lista-sidenav {
+  position: fixed;
+  top: 33%;
+  left: 56px;
+}
+
+.logo {
+  height: 230px;
+  width: 220px;
+  top: -2%;
+  left: 14px;
+  position: absolute;
+}
+
+hr{
+  top: 100px;
+  position: fixed;
+}
+
+
+

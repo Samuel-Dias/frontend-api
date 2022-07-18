@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import * as $ from 'jquery';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,28 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'samu2';
+
+  ngOnInit() {
+    
+//-------------------------------------------------------------    
+$(document).ready(function(){ 
+
+// Fecha e abre 'menu' do usuário no sidebar
+    const tag = $('#myLinks');
+    $("app-perfil-sidenav").click(function(e){
+      if (tag.css('display') == 'none'){
+      $("#myLinks").fadeIn("fast");
+      }
+      else $("#myLinks").fadeOut("fast");
+  }); 
+     $("html").click(function(e){
+    if (!e.target.closest("app-perfil-sidenav") ){
+        $("#myLinks").fadeOut("fast");
+    }
+}); 
+//---------------------------------------------------------------
+});
+
 }
+}
+

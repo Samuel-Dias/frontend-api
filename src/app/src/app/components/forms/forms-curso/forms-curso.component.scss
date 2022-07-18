@@ -1,0 +1,64 @@
+.botperson {
+    border: none;
+    color: white;
+    padding: 14px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: block;
+    font-size: 15.5px;
+    margin: 4px 2px;
+    cursor: pointer;
+    background-color: #1a75ff;
+    border-radius: 6px;
+    float: right;
+    margin-top: -1em;
+}
+
+.button2 {
+    display: block;
+    margin: 4px 2px;
+    float: right;
+    margin-top: -1em;
+    margin-right: 3.3em;
+}
+
+#cancelar{
+    background-color: #ff1a1a;
+}
+
+#cancelar:active {
+    background-color: #ff4d4d;
+}
+
+.org1{
+    float: left;
+}
+
+.org2{
+    float: left;
+    margin-left: 120px;
+}
+
+.corFundo{
+    background-color: white;
+    position: fixed;
+    width: 163vh;
+}
+
+#presencial{
+    background-color: white;
+    color: black;
+}
+
+#ead{
+    background-color: white;
+    color: black;
+}
+
+#ead :active{
+    background-color: blue;
+}
+//---------------------------------------------------------------------------
+
+
+  

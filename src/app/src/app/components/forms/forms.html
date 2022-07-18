@@ -1,0 +1,191 @@
+    <p-card *ngIf="true">
+        <p-steps [model]="items" [(activeIndex)]="gfg" [readonly]="true"></p-steps>
+    </p-card>
+    <br>
+    <!--------------------------------------------------------------------------------------->
+    <p-card *ngIf="gfg === 0"> 
+            <ng-template pTemplate="title"> Informações Pessoais </ng-template>
+            <ng-template pTemplate="subtitle"> Entre com os dados cadastrais </ng-template>
+            <ng-template pTemplate="content">
+            <form [formGroup]="formulario1" autocomplete = "off">
+                <label><p>Nome Completo: *</p></label>
+                <input type="username" pInputText style="width: 100%;" formControlName="nome" [(ngModel)]="nome"/><br>
+                <small *ngIf="formulario1.get('nome')?.errors?.['required'] && formulario1.get('nome')?.touched" class="p-error">Nome é obrigatório <br></small>
+                <br><br>
+                <div class="org1">
+                <label><p>CPF: *</p></label>
+                <p-inputMask id="cpf" formControlName="cpf" mask="999.999.999-99" placeholder="999.999.999-99" [(ngModel)]="cpf"></p-inputMask><br>
+                <small *ngIf="formulario1.get('cpf')?.errors?.['required'] && formulario1.get('cpf')?.touched" class="p-error">CPF é obrigatório <br></small>
+                </div>
+                <div class="org2">
+                <label><p>Data de Nascimento: *</p></label>
+                <div>
+                    <div class="col-12 md:col-6 lg:col-4">
+                        <p-inputMask id="data" [(ngModel)]="data" formControlName="data" mask="99/99/9999" placeholder="99/99/9999" slotChar="dd/mm/yyyy"></p-inputMask> <br>
+                        <small *ngIf="formulario1.get('data')?.errors?.['required'] && formulario1.get('data')?.touched" class="p-error">Data de nascimento é obrigatório <br></small>
+                    </div>
+                </div>
+                </div>
+                <div class="org3">
+                    <label><p>Telefone:</p></label>
+                    <p-inputMask id="telefone" formControlName="telefone" mask="(99) 99999-9999" placeholder="(99)99999-9999" [(ngModel)]="telefone"></p-inputMask><br>
+                    <small *ngIf="formulario1.get('telefone')?.errors?.['required'] && formulario1.get('telefone')?.touched" class="p-error">Telefone é obrigatório <br></small>
+                </div>
+                <br><br><br><br>
+                <br>
+                <label><p>E-mail: *</p></label>
+                <input id="email" formControlName="email" type="username" pInputText style="width: 100%;" [(ngModel)]="email"/><br>
+                <small *ngIf="formulario1.get('email')?.errors?.['required'] && formulario1.get('email')?.touched" class="p-error">E-mail é obrigatório <br></small>
+                <small *ngIf="formulario1.get('email')?.errors?.['email'] && formulario1.get('email')?.touched" class="p-error">Formato de e-mail inválido <br></small>
+                <br>
+                <br><br>
+                <div class="button2">
+                    <div class="grid grid-nogutter justify-content-end">
+                        <p-button label="Próximo" (click)="next1()" [disabled]="!formulario1.valid" icon="pi pi-angle-right" iconPos="right"></p-button>
+                    </div>
+                </div>
+                <button class="button" routerLink="/sistema/cadastro" id="cancelar">Cancelar</button>
+            </form>
+        </ng-template>
+    </p-card>
+    <!--------------------------------------------------------------------------------------->
+    <p-card *ngIf="gfg === 1" >
+        <!--p-toast position="top-right"></p-toast-->
+        <ng-template pTemplate="subtitle">
+
+        <mat-stepper linear>
+            <mat-step [stepControl]="firstFormGroup" completed=false>
+                <form [formGroup]="firstFormGroup">
+              <ng-template matStepLabel>Selecione o curso</ng-template>
+              <ng-template matStepContent>
+                <div class="org7">
+            <br><br>
+            <label><p>Curso: *</p></label>
+            <p-dropdown [options]="cursoOptions" formControlName="curso" [(ngModel)]="curso" [style]="{'width': '350px'}" [editable]="false" optionLabel="nome" placeholder="Selecione um curso" [virtualScroll]="true" scrollHeight="200px"></p-dropdown>
+            <br><br><br><br><br><br><br><br>
+            <button mat-button class="button3" (click)="voltar()">Voltar</button>
+            <button mat-button matStepperNext [disabled]="!firstFormGroup.valid" class="button4">Próximo</button>
+                </div>
+              </ng-template>
+                </form>
+            </mat-step>
+    
+            <mat-step [stepControl]="secondFormGroup">
+                <form [formGroup]="secondFormGroup">
+              <ng-template matStepLabel>Selecione a Modalidade</ng-template>
+              <ng-template matStepContent>
+                <br><br>
+                <div class="org7">
+                    <label><p>Modalidade: *</p></label>
+                    <p-selectButton [options]="modalidadeOptions" formControlName="modalidade" [(ngModel)]="modalidade" [multiple]=false optionLabel="name" optionValue="value"></p-selectButton>
+                    <br><br><br><br><br><br><br><br>
+                    <button mat-button matStepperPrevious class="button3">Voltar</button>
+                    <button mat-button matStepperNext [disabled]="!secondFormGroup.valid" class="button4" (click)="filtro1()">Próximo</button>
+                </div>
+              </ng-template>
+            </form>
+            </mat-step>
+    
+            <mat-step [stepControl]="quatroFormGroup" *ngIf="modalidade === 0">
+                <form [formGroup]="quatroFormGroup">
+              <ng-template matStepLabel>Selecione o Turno</ng-template>
+              <ng-template matStepContent>
+                <br><br>
+                <div class="org7">
+                    <label><p>Turno: *</p></label>
+                    <p-selectButton [options]="turnoOptions" formControlName="turno" [(ngModel)]="turno" [multiple]=false optionLabel="name" optionValue="value"></p-selectButton>
+                    <br><br><br><br><br><br><br><br>
+                    <button mat-button matStepperPrevious class="button3">Voltar</button>
+                    <button mat-button matStepperNext [disabled]="!quatroFormGroup.valid" class="button4" (click)="filtro2()">Próximo</button>
+                </div>
+              </ng-template>
+            </form>
+            </mat-step>
+    
+            <mat-step *ngIf="validador || modalidade == 0">
+                <ng-template matStepLabel>Selecione a Turma</ng-template>
+                <ng-template matStepContent>
+                <br><br>
+                <div class="org7">
+                <label><p>Selecione uma Turma: * <small id="msgError"></small></p></label>
+                <br>
+                <div class="card">
+                    <p-table [value]="listaFormatada2" selectionMode="single" [(selection)]="turmaSelecionada" responsiveLayout="scroll" [paginator]="true" [rows]="10" [scrollable]="true" scrollHeight="500px" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries">
+                        <ng-template pTemplate="header">
+                            <tr>
+                                <th>Código da Turma</th>
+                                <th>Vagas Restantes</th>
+                                <th>Total de Vagas</th>
+                            </tr>
+                        </ng-template>
+                        <ng-template pTemplate="body" let-listaFormatada2>
+                            <tr [pSelectableRow]="listaFormatada2">
+                                <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{listaFormatada2.cod}}</td>
+                                <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{listaFormatada2.vagasRestantes}}</td>
+                                <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{listaFormatada2.vagas}}</td>
+                            </tr>
+                        </ng-template>
+                    </p-table>
+                </div><br>
+                    <button mat-button matStepperPrevious class="button3">Voltar</button>
+                    <button mat-button matStepperNext class="button4" (click)="next2()">Próximo</button>
+                </div>
+                </ng-template>
+            </mat-step>
+    
+            <mat-step *ngIf="modalidade === 1">
+                <ng-template matStepLabel>Selecione a Turma</ng-template>
+                <ng-template matStepContent>
+                <br><br>
+                <div class="org7">
+                <label><p>Selecione uma Turma: * &nbsp;&nbsp;&nbsp;<small id="msgError"></small></p></label>
+                <br>
+                <div class="card">
+                    <p-table [value]="listaFormatada1" selectionMode="single" [(selection)]="turmaSelecionada" responsiveLayout="scroll" [scrollable]="true" scrollHeight="500px"[paginator]="true" [rows]="10" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries">
+                        <ng-template pTemplate="header">
+                            <tr>
+                                <th>Código da Turma</th>
+                                <th>Vagas Restantes</th>
+                                <th>Total de Vagas</th>
+                            </tr>
+                        </ng-template>
+                        <ng-template pTemplate="body" let-listaFormatada1>
+                            <tr [pSelectableRow]="listaFormatada1">
+                                <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{listaFormatada1.cod}}</td>
+                                <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{listaFormatada1.vagasRestantes}}</td>
+                                <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{listaFormatada1.vagas}}</td>
+                            </tr>
+                        </ng-template>
+                    </p-table>
+                </div><br>
+                    <button mat-button matStepperPrevious class="button3">Voltar</button>
+                    <button mat-button matStepperNext class="button4" (click)="next2()">Próximo</button>
+                </div>
+                </ng-template>
+            </mat-step>
+        </mat-stepper>
+    
+    </ng-template>
+    </p-card>
+    <!---------------------------------------------------------------------------------------->
+    <div *ngIf="gfg === 2">
+        <h2>GeeksforGeeks</h2>
+        <h4>PrimeNG Steps Component</h4>
+        
+        <button (click)="next1()">Next</button>
+        <button (click)="voltar()">Back</button>
+    </div>
+    <!---------------------------------------------------------------------------------------->
+    <div *ngIf="gfg === 3">
+        <h2>GeeksforGeeks</h2>
+        <h4>PrimeNG Steps Component</h4>
+        <p-steps [model]="items"
+            [(activeIndex)]="gfg" [readonly]="false">
+        </p-steps><br>
+        <button (click)="next1()">Next</button>
+        <button (click)="voltar()">Back</button>
+    </div>
+    <!---------------------------------------------------------------------------------------->
+
+    
+    

@@ -1,0 +1,54 @@
+<p-toast position="top-right"></p-toast>
+<p-card>
+    <ng-template pTemplate="title"> Informações da Turma </ng-template>
+    <ng-template pTemplate="subtitle"> Entre com os dados cadastrais da turma</ng-template>
+    <ng-template pTemplate="content"> 
+        <hr color="#bfbfbf">
+        <br>
+    <form [formGroup]="formularioTurma" autocomplete="off" class="corFundo">
+      <div class="org1">
+        <label><p>Curso: *</p></label>
+        <p-dropdown [options]="cursoOptions" formControlName="curso" [(ngModel)]="curso" [style]="{'width': '350px'}" [editable]="false" optionLabel="nome" placeholder="Selecione um curso"></p-dropdown>
+        <!--small *ngIf="formularioTurma.get('curso')?.errors?.['required'] && formularioTurma.get('curso')?.touched" class="p-error">&nbsp;&nbsp;&nbsp;Curso é obrigatório</small-->
+      </div>
+      <div class="org2">
+      <label><p>Quantidade de Vagas: *</p></label>
+      <div class="field col-12 md:col-3">
+        <p-inputNumber inputId="integeronly" formControlName="quantidadeVagas" [(ngModel)]="quantidadeVagas"></p-inputNumber>
+        <small *ngIf="formularioTurma.get('quantidadeVagas')?.errors?.['required'] && formularioTurma.get('quantidadeVagas')?.touched" class="p-error"><br>Quantidade de vagas é obrigatório</small>
+      </div>
+      </div>
+      <br>
+      <div class="org3">
+        <label><p>Modalidade: *</p></label>
+        <p-selectButton [options]="modalidadeOptions" formControlName="modalidade" [(ngModel)]="modalidade" [multiple]=false optionLabel="name" optionValue="value" (click)="bot1()"></p-selectButton>
+      </div>
+      <div *ngIf="validador" class="org4">
+        <label><p>Turno: *</p></label>
+        <p-selectButton [options]="turnoOptions" formControlName="turno" [(ngModel)]="turno" [multiple]=false optionLabel="name" optionValue="value"></p-selectButton>
+      </div>
+      <br>
+      <div class="botoes">
+      <div class="button2">
+        <div class="grid grid-nogutter justify-content-end">
+            <p-button [disabled]="!formularioTurma.valid" label="Cadastrar" (click)="bot2()"></p-button>
+        </div>
+      </div>
+      <button class="button" routerLink="/sistema/cadastro" id="cancelar">Cancelar</button>
+      </div>
+      <p-confirmDialog #cd [style]="{width: '425'}" [transitionOptions]="'170ms'" [dismissableMask]=false appendTo="body" [rtl]=true>
+        <ng-template pTemplate="header">
+          <!--h3>Header Content</h3-->
+        </ng-template>
+        <ng-template pTemplate="footer">
+            <button type="button" pButton icon="pi pi-times" label="Não" (click)="cd.reject()"></button>
+            <button type="button" pButton icon="pi pi-check" label="Sim" (click)="cd.accept()"></button>
+        </ng-template>
+        </p-confirmDialog>
+      </form>
+      </ng-template>
+</p-card>
+
+
+
+

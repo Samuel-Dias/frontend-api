@@ -1,0 +1,63 @@
+.button {
+    border: none;
+    color: white;
+    padding: 14px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: block;
+    font-size: 15.5px;
+    margin: 4px 2px;
+    cursor: pointer;
+    background-color: #1a75ff;
+    border-radius: 6px;
+    float: right;
+    margin-top: -1em;
+}
+
+.button2 {
+    display: block;
+    margin: 4px 2px;
+    float: right;
+    margin-top: -1em;
+}
+
+#cancelar{
+    background-color: #ff1a1a;
+}
+
+#cancelar:active {
+    background-color: #ff4d4d;
+}
+
+.org1{
+    float: left;
+    margin-right: 43vh;
+}
+
+.org2{
+    float: left;
+}
+
+.org3{
+    position: relative;
+    top: 7vh;
+    float: left;
+}
+
+.org4{
+    position: relative;
+    float: right;
+    margin-top: 7vh;
+}
+
+.corFundo{
+    position: fixed;
+    background-color: white;
+}
+
+.botoes {
+    position: fixed;
+    top: 60%;
+    right: 5vh;
+}
+

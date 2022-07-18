@@ -1,0 +1,154 @@
+.button {
+    border: none;
+    color: white;
+    padding: 14px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: block;
+    font-size: 15.5px;
+    margin: 4px 2px;
+    cursor: pointer;
+    background-color: #1a75ff;
+    border-radius: 6px;
+    float: right;
+    margin-top: -1em;
+}
+
+.button2 {
+    display: block;
+    margin: 4px 2px;
+    float: right;
+    margin-top: -1em;
+}
+
+.button3 {
+    border: none;
+    //color: white;
+    padding: 14px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: block;
+    font-size: 15.5px;
+    margin: 4px 2px;
+    cursor: pointer;
+    //background-color: #1a75ff;
+    border-radius: 6px;
+    float: left;
+    //margin-top: -1em;
+}
+
+.button4 {
+    border: none;
+    //color: white;
+    padding: 14px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: block;
+    font-size: 15.5px;
+    margin: 4px 2px;
+    cursor: pointer;
+    //background-color: #1a75ff;
+    border-radius: 6px;
+    float: right;
+    //margin-top: -1em;
+}
+
+#cancelar{
+    background-color: #ff1a1a;
+}
+
+#cancelar:active {
+    background-color: #ff4d4d;
+}
+
+.org1{
+    float: left;
+}
+
+.org2{
+    float: left;
+    margin-left: 120px;
+}
+
+.org3{
+    float: left;
+    margin-left: 120px;
+}
+
+.abaCurso{
+    /*
+    position: fixed;    
+   // z-index: 2;
+   left: 27%;
+   //overflow-y: scroll;
+   */
+   overflow-y: scroll;
+}
+
+.org7{
+    //position: fixed;
+    //width: 30%;
+    height: 40vh;
+    overflow-y: none;
+    text-align: center;
+}
+
+.card{
+    //border: solid;
+    box-shadow: 0 10px 18px 7px rgba(0,0,0,0.2);
+}
+
+#msgError{
+    color: #ff4d4d;
+    //text-indent: 50px;
+}
+
+.geral{
+    //background-color: #1a75ff;
+    position: fixed;
+    height: 100vh;
+    width: 167vh;
+    overflow-y: auto;
+}
+
+:host ::ng-deep p-table{
+    font-style: italic;
+    color: blue;
+  }
+/*
+  :host ::ng-deep p-table:after{
+    //font-style: italic;
+    //color: blue;
+    background-color: #ff4d4d;
+  }
+*/
+  /*
+  :host ::ng-deep td{
+    //font-style: italic;
+    //color: blue;
+    background-color: #ff4d4d;
+    text-align: center;
+  }
+*/
+/*
+:host ::ng-deep td .ativo{
+    //font-style: italic;
+    //color: blue;
+    background-color: #ff4d4d;
+    //text-align: center;
+  }
+
+  :host ::ng-deep td:active{
+    //font-style: italic;
+    //color: blue;
+    background-color: white;
+    //text-align: center;
+  }
+
+  :host ::ng-deep td:visited{
+    //font-style: italic;
+    //color: blue;
+    background-color: white;
+    //text-align: center;
+  }
+  */

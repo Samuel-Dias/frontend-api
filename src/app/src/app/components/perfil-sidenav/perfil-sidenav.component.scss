@@ -1,0 +1,60 @@
+.dropbtn {
+    color: white;
+    padding: 4px;
+    font-size: 16px;
+    border: none;
+    text-decoration: none;
+    font-family: cursive;
+}
+  
+.dropup {
+    position: fixed;
+    display: inline-block;
+    bottom: 32px;
+    left: 92px;
+}
+  
+.opcoes-perfil {
+    display: none;
+    position: absolute;
+    background-color: #f2f2f2;
+    min-width: 147px;
+    bottom: 36px;
+    z-index: 1;
+    border-radius: 7px;
+    left: -15px;
+    list-style: none;
+    box-shadow: 0px 8px 16px 0px rgb(58, 58, 58);
+}
+  
+.opcoes-perfil a {
+    color: black;
+    padding: 9px 9px;
+    text-decoration: none;
+    display: block;
+    font-size: 12px;
+}
+
+.opcoes-perfil a:hover {
+    background-color: #DCDCDC;
+    border-radius: 5px;
+    color: #FF261B;
+}
+
+hr { 
+    width: 88%;
+  } 
+
+.fotoPerfil {
+    bottom: 17px;
+    left: 38px;
+    position: fixed;
+}
+
+.icon {
+    height: 12px;
+    width: 13px;
+    bottom: 35px;
+    left: 190px;
+    position: fixed;
+}

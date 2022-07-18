@@ -1,0 +1,46 @@
+<p-toast position="top-right"></p-toast>
+<p-card>
+    <ng-template pTemplate="title"> Informações do Curso </ng-template>
+    <ng-template pTemplate="subtitle"> Entre com os dados cadastrais do curso</ng-template>
+    <ng-template pTemplate="content"> 
+        <hr color="#bfbfbf">
+        <br>
+        <form [formGroup]="formularioCurso" autocomplete = "off" class="corFundo">
+        <label><p>Nome do Curso: *</p></label>
+        <input type="text" style="width: 97%;" pInputText formControlName="nomeCurso" [(ngModel)]="nomeCurso"> 
+        <small *ngIf="formularioCurso.get('nomeCurso')?.errors?.['required'] && formularioCurso.get('nomeCurso')?.touched" class="p-error"><br>Curso é obrigatório</small>
+        <br><br><br>
+        <div class="org1">
+        <label><p>Tempo total de duração do Curso: *</p></label>
+        <div class="field col-12 md:col-3">
+            <p-inputNumber inputId="integeronly" formControlName="tempoDuracao" [(ngModel)]="tempoDuracao"></p-inputNumber>
+        </div>
+        <small>(Em Horas)</small><br>
+        <small *ngIf="formularioCurso.get('tempoDuracao')?.errors?.['required'] && formularioCurso.get('tempoDuracao')?.touched" class="p-error">Tempo de duração é obrigatório <br></small>
+        </div>
+        <div class="org2">
+        <label><p>Preço: *</p></label>
+        <p-inputNumber placeholder="R$ 00,00" formControlName="preco" [(ngModel)]="preco" inputId="currency-us" mode="currency" currency="BRL"></p-inputNumber>
+        <br>
+        <small *ngIf="formularioCurso.get('preco')?.errors?.['required'] && formularioCurso.get('preco')?.touched" class="p-error">Preço é obrigatório <br></small>
+        </div>
+        <br><br><br><br><br><br>
+        <div class="button2">
+            <div class="grid grid-nogutter justify-content-end">
+                <p-button [disabled]="!formularioCurso.valid" label="Cadastrar" (click)="cadastrar()"></p-button>
+            </div>
+        </div>
+        <button class="botperson" routerLink="/sistema/cadastro" id="cancelar">Cancelar</button>
+        <p-confirmDialog #cd [style]="{width: '425'}" [transitionOptions]="'170ms'" [dismissableMask]=false appendTo="body" [rtl]=true>
+            <ng-template pTemplate="header">
+              <!--h3>Header Content</h3-->
+            </ng-template>
+            <ng-template pTemplate="footer">
+                <button type="button" pButton icon="pi pi-times" label="Não" (click)="cd.reject()"></button>
+                <button type="button" pButton icon="pi pi-check" label="Sim" (click)="cd.accept()"></button>
+            </ng-template>
+            </p-confirmDialog>
+        </form>
+    </ng-template>
+
+</p-card>
